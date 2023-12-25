@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
     <body>
         <h1>Hello</h1>
         <p>World..</p>
+        <p>Viewed: ${newCount}</p>
     </body>
     </html>
     `);
