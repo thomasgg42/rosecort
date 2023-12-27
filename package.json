@@ -2,9 +2,8 @@
   "name": "rosecort",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	  "start": "nodemon --exec node src/server.js --watch src --ext js,ts --ignore '*.test.ts'"
   },
   "keywords": [],
   "author": "",

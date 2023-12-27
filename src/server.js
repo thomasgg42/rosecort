@@ -9,9 +9,9 @@ server.use(
 
 // route
 server.get('/', (req, res) => {
-    const count = readFileSync('./viewed.txt', 'utf-8');
+    const count = readFileSync('./src/viewed.txt', 'utf-8');
     const newCount = parseInt(count) + 1;
-    writeFileSync('./viewed.txt', newCount.toString());
+    writeFileSync('./src/viewed.txt', newCount.toString());
 
     res.send(`
     <!DOCTYPE html>
@@ -21,14 +21,12 @@ server.get('/', (req, res) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body id="body">
-        <h1>Hello</h1>
-        <p>World..</p>
-        <p>Viewed: ${newCount}</p>
+        <h1>Rosecort</h1>
+        <h2>${process.env.GREETINGS_TEXT}</h2>
+        <p>Nettsiden har blitt åpnet: ${newCount} ganger!</p>
     </body>
     </html>
     `);
 });
-
-
 
 server.listen(3000, () => console.log('Sever start'));
