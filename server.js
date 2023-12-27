@@ -1,13 +1,15 @@
 const {readFileSync, writeFileSync } = require('fs');
 
 const express = require('express');
-const app = express();
+const server = express();
 
+server.use(
+    express.static('public')
+);
 
 // route
-app.get('/', (req, res) => {
+server.get('/', (req, res) => {
     const count = readFileSync('./viewed.txt', 'utf-8');
-    console.log(count);
     const newCount = parseInt(count) + 1;
     writeFileSync('./viewed.txt', newCount.toString());
 
@@ -18,7 +20,7 @@ app.get('/', (req, res) => {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
-    <body>
+    <body id="body">
         <h1>Hello</h1>
         <p>World..</p>
         <p>Viewed: ${newCount}</p>
@@ -28,4 +30,5 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(5000, () => console.log('test'));
+
+server.listen(3000, () => console.log('Sever start'));
